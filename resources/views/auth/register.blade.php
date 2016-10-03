@@ -24,13 +24,13 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-2">
-                                                            <input type="text" placeholder="First Name" class="form-control" name="fname" value="{{ old('fname') }}"required="required">
+                                                            <input type="text" placeholder="First Name" class="form-control" name="fname" value="{{ old('fname') }}">
 							</div>
                                                         <div class="col-md-2">
                                                             <input type="text" placeholder="Middle Name" class="form-control" name="mname" value="{{ old('mname') }}">
 							</div>
                                                         <div class="col-md-2">
-								<input type="text" placeholder ="Last Name" class="form-control" name="lname" value="{{ old('lname') }}"required="required">
+								<input type="text" placeholder ="Last Name" class="form-control" name="lname" value="{{ old('lname') }}">
 							</div>
 						</div>
                                                 
@@ -38,11 +38,11 @@
          
                                                   <label class="col-md-4 control-label">Date of Birth</label>
                                                     <div class="col-md-2">
-                                                        <input type="date" placeholder="1990-01-30" name="birthdate" value="{{ old('birthdate')}}"required="required">
+                                                        <input type="text" placeholder="1990-01-30" name="birthdate">
                                                     </div>  
                                                   <label class="col-md-2 control-label">Gender</label>
                                                     <div class="col-md-2">
-                                                        <select name="gender" class="form form-control"required="required">
+                                                        <select name="gender" class="form form-control">
                                                             <option value="M">Male</option>
                                                             <option value="F">Female</option>
                                                         </select>    
