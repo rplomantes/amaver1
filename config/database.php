@@ -65,16 +65,17 @@ return [
 		],
 
 		'lms_connection' => [
-			'driver'    => 'mysql',
-			'host'      => env('DB_HOST1','localhost'),
-			'database'  => env('DB_DATABASE1','roy'),
-			'username'  => env('DB_USERNAME1','roy'),
-			'password'  => env('DB_PASSWORD1',''),
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-			'strict'    => false,
-		],
+                        'driver'    => 'mysql',
+                        'host'      => 'ama-db-instance.cywaxl3qqd6o.ap-southeast-1.rds.amazonaws.com',
+                        'database'  => 'amaDB',
+                        'username'  => 'db_user',
+                        'password'  => 'Password4321',
+                        'charset'   => 'utf8',
+                        'collation' => 'utf8_unicode_ci',
+                        'prefix'    => '',
+                        'strict'    => false,
+                ],
+
 
 		'pgsql' => [
 			'driver'   => 'pgsql',
