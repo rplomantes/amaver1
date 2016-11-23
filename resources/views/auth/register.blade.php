@@ -127,7 +127,13 @@
 							</div>
 						</div>
 
+                                                <div class="form-group">
+                                                    <div class="col-md-6">
+                                                        {!! app('captcha')->display(); !!}
+                                                    </div>    
+                                                </div>    
 						<div class="form-group">
+                                                   
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									Register

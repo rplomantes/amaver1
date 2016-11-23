@@ -294,6 +294,19 @@ $("#degreebtnoffered").click(function(){
     <p> Thank you for registering at <strong>AMA Online University</strong>. In order for us to evaluate your credentials, 
         please follow the steps below: </p>
         <h4><b>Step 1</b>  Choose the academic program you wish to enroll</h4>
+        
+        @if (count($errors) > 0)
+						<div class="alert alert-danger">
+							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+	@endif
+        
+        
     {!! Form::open(array('url'=>url('interest'),'files'=>'true')) !!}
     <div class="form-group">
         <select name="degree" class="form-control">

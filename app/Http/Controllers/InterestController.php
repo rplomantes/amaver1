@@ -42,7 +42,12 @@ class InterestController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-        
+        $this->validate($request,[
+            'tor' => 'mimes:jpeg,png,pdf,gif|max:5000',
+            'diploma' => 'mimes:jpeg,png,pdf,gif|max:5000',
+            'form137' => 'mimes:jpeg,png,pdf,gif|max:5000',
+            'birthcertificate' => 'mimes:jpeg,png,pdf,gif|max:5000'
+        ]);
         $degreename = \App\DegreeOffering::where('programcode',$request->degree)->first(); 
         $interest = new \App\Interest;
         $interest->user_id = \Auth::user()->id;

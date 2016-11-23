@@ -140,7 +140,12 @@ $("#viewgrade").hide();
                     @if($degree->status == '7')
                     selected="selected"
                     @endif
-                            >Not Required</option>    			
+                            >Not Required</option>   
+                 <option value="8"
+                    @if($degree->status == '8')
+                    selected="selected"
+                    @endif
+                            >Partial Payment</option>           
                 
                     
                 </select>    
