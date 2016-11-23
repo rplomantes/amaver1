@@ -128,7 +128,7 @@
 						</div>
 
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label">Not a roboot?</label>
+                                                    <label class="col-md-4 control-label">Not a robot?</label>
                                                     <div class="col-md-6">
                                                         
                                                         {!! app('captcha')->display(); !!}
