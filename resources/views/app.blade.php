@@ -7,8 +7,56 @@
         @if (Auth::guest())
         <title>AMA University Online</title>
         @else
-	<title>{{ Auth::user()->fname }} {{ Auth::user()->lname }} - AMA University</title>
+	<title>{{ Auth::user()->fname }} {{ Auth::user()->lname }} - AMA University</title>       
+        <style>
+            .dropdown-submenu {
+                position: relative;
+            }
 
+            .dropdown-submenu>.dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -6px;
+                margin-left: -1px;
+                -webkit-border-radius: 0 6px 6px 6px;
+                -moz-border-radius: 0 6px 6px;
+                border-radius: 0 6px 6px 6px;
+            }
+
+            .dropdown-submenu:hover>.dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-submenu>a:after {
+                display: block;
+                content: " ";
+                float: right;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+                border-width: 5px 0 5px 5px;
+                border-left-color: #ccc;
+                margin-top: 5px;
+                margin-right: -10px;
+            }
+
+            .dropdown-submenu:hover>a:after {
+                border-left-color: #fff;
+            }
+
+            .dropdown-submenu.pull-left {
+                float: none;
+            }
+
+            .dropdown-submenu.pull-left>.dropdown-menu {
+                left: -100%;
+                margin-left: 10px;
+                -webkit-border-radius: 6px 0 6px 6px;
+                -moz-border-radius: 6px 0 6px 6px;
+                border-radius: 6px 0 6px 6px;
+            }
+        </style>
 	 <script>
             
 //         var explode = function(){
@@ -69,6 +117,102 @@
                                 <li><a href="http://www.amauonline.com">AMA University Online</a></li>
 				<li><a href="http://portal.amauonline.com">My Portal</a></li>
 				<li><a href="http://lms.amauonline.com">My Class</a></li>
+                                    @if(Auth::guest())
+                                    @else
+                                        @if(Auth::user()->accesslevel==1)
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+                                                        
+<!--                                                        <li><a href="#">Final Grades</a></li>-->
+                                                        <li class="dropdown-submenu">
+                                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">List of Enrolled Students Per Course</a>
+                                                            <ul class="dropdown-menu">
+                                                                <li class="dropdown-submenu">
+                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Academic Programs</a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a href={{url('bsit/students')}}>Bachelor of Science in Information Technology</a></li>
+                                                                        <li><a href={{url('bscs/students')}}>Bachelor of Science in Computer Science</a></li>
+                                                                        <li><a href={{url('bscpe/students')}}>Bachelor of Science in Computer Engineering</a></li>
+                                                                        <li><a href={{url('bsa/students')}}>Bachelor of Science in Accountancy</a></li>
+                                                                        <li><a href={{url('bse/students')}}>Bachelor of Arts in Economics</a></li>
+                                                                        <li><a href={{url('abe/students')}}>Bachelor of Arts in English</a></li>
+                                                                        <li><a href={{url('abmascom/students')}}>Bachelor of Arts in Mass Communication</a></li>
+                                                                        <li><a href={{url('abpolsci/students')}}>Bachelor of Arts in Psychology</a></li>
+                                                                        <li><a href={{url('bscs/students')}}>Bachelor of Arts in Political Science</a></li>
+                                                                        <li><a href={{url('beed/students')}}>Bachelor of Elementary Education</a></li>
+                                                                        <li><a href={{url('bsed-cs/students')}}>Bachelor of Secondary Education Major in Computer Science</a></li>
+                                                                        <li><a href={{url('bsed-math/students')}}>Bachelor of Secondary Education Major in Mathematics</a></li>
+                                                                        <li><a href={{url('bsed-english/students')}}>Bachelor of Secondary Education Major in English</a></li>
+                                                                        <li><a href={{url('bsba-mis/students')}}>Bachelor of Science in Business Administration Major in MIS</a></li>
+                                                                        <li><a href={{url('pg-mba/students')}}>Master in Business Administration</a></li>
+                                                                        <li><a href={{url('pg-mit/students')}}>Master in Information Technology</a></li>
+                                                                        <li><a href={{url('pg-mcs/students')}}>Master of Science in Computer Science</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="dropdown-submenu">
+                                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Short Courses</a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a href={{url('1/shortcourse/students')}}>XML - Based Web Application</a></li>
+                                                                        <li><a href={{url('2/shortcourse/students')}}>Mail and Web Services</a></li>
+                                                                        <li><a href={{url('3/shortcourse/students')}}>Network Security</a></li>
+                                                                        <li><a href={{url('4/shortcourse/students')}}>Linux Adminstration</a></li>
+                                                                        <li><a href={{url('6/shortcourse/students')}}>Multimedia Communications System</a></li>
+                                                                        <li><a href={{url('7/shortcourse/students')}}>Multimedia Sound and Video</a></li>
+                                                                        <li><a href={{url('8/shortcourse/students')}}>Web Application Development using JSP and OBDC</a></li>
+                                                                        <li><a href={{url('9/shortcourse/students')}}>Web Application Development using PHP and MySQL</a></li>
+                                                                        <li><a href={{url('10/shortcourse/students')}}>Visual Graphics Design 101</a></li>
+                                                                        <li><a href={{url('11/shortcourse/students')}}>Illustrations 101</a></li>
+                                                                        <li><a href={{url('17/shortcourse/students')}}>Digital Photography</a></li>
+                                                                        <li><a href={{url('19/shortcourse/students')}}>Fundamentals of Accounting (Bookkeeping)</a></li>
+                                                                        <li><a href={{url('20/shortcourse/students')}}>Visual Basic .NET</a></li>
+                                                                        <li><a href={{url('21/shortcourse/students')}}>Principles of Operating System</a></li>
+                                                                        <li><a href={{url('22/shortcourse/students')}}>Object Oriented Programming</a></li>
+                                                                        <li><a href={{url('23/shortcourse/students')}}>MS SQL Server 2012</a></li>
+                                                                        <li><a href={{url('24/shortcourse/students')}}>Mobile Programming 1</a></li>
+                                                                        <li><a href={{url('24/shortcourse/students')}}>MS Certified Technology Specialist</a></li>
+                                                                        <li><a href={{url('25/shortcourse/students')}}>Linux Essentials</a></li>
+                                                                        <li><a href={{url('26/shortcourse/students')}}>MS Office Essentials</a></li>
+                                                                        <li><a href={{url('27/shortcourse/students')}}>Introduction to World Wide Web</a></li>
+                                                                        <li><a href={{url('28/shortcourse/students')}}>Database Management System 1</a></li>
+                                                                        <li><a href={{url('29/shortcourse/students')}}>CISCO 1</a></li>
+                                                                        <li><a href={{url('30/shortcourse/students')}}>CISCO 2</a></li>
+                                                                        <li><a href={{url('31/shortcourse/students')}}>CISCO 3</a></li>
+                                                                        <li><a href={{url('32/shortcourse/students')}}>CISCO 4</a></li>
+                                                                        <li><a href={{url('33/shortcourse/students')}}>Computer Programming 1</a></li>
+                                                                        <li><a href={{url('34/shortcourse/students')}}>Computer Programming 3</a></li>
+                                                                        <li><a href={{url('35/shortcourse/students')}}>Unified Functional Testing</a></li>
+                                                                        <li><a href={{url('36/shortcourse/students')}}>Application Lifecycle Management</a></li>
+                                                                        <li><a href={{url('37/shortcourse/students')}}>Load Runner</a></li>
+                                                                        <li><a href={{url('39/shortcourse/students')}}>Big Data Analytics</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        
+<!--                                                        <li><a href="#">List of Paid Students</a></li>
+                                                        <li><a href="#">Grade Slip</a></li>-->
+                                                            <li><a href="/persubject">List of Enrolled per Subject</a></li>
+                                                            <li><a href="/perstudent">Total Credited subjects, Total Passed, Total Remaining subjects</a></li>
+						</ul>
+                                	    </li>
+<!--                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounting and Audit<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#">Student's Account</a></li>
+                                                        <li><a href="#">Total Collection</a></li>
+						</ul>
+                                	    </li>-->
+                                        @else
+                                        @endif
+                                        @if(Auth::user()->accesslevel==2)
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports<span class="caret"></span></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="/totalcollection">Total Collection</a></li>
+                                                    <li><a href="/collectionreport">Total Payment, Balance of Students</a></li>
+                                                </ul>
+                                        @endif
+                                    @endif
 				</ul>
 
                             <ul class="nav navbar-nav navbar-right">
@@ -82,6 +226,7 @@
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
+                                                
 					@endif
 				</ul>
 			</div>

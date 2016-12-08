@@ -19,7 +19,7 @@ class EvaluationController extends Controller {
 public function search(){
               
     $search = \Illuminate\Support\Facades\Input::get('search');
-    $users = \App\User::where('lname','like',"$search%")->where('accesslevel','0')->orderBy('created_at','DESC')->get();
+    $users = DB::Select("Select * from `users` where concat(studentid, fname, lname) like '%$search%' and accesslevel=0 order by created_at DESC  limit 0, 50");
     $accesslevel = \Auth::user()->accesslevel;
     
     if($accesslevel != '1'){
@@ -315,7 +315,7 @@ public function changeCourse($userid){
             
         }
 
- public function getgrade($varusername){    
+ public function getgrade($email){
             $sql = "SELECT u.firstname AS 'First Name', u.lastname AS 'Last Name', c.fullname AS 'Course', (
                     SELECT gh.finalgrade
                     FROM mdl_grade_grades gh
@@ -329,9 +329,10 @@ public function changeCourse($userid){
                     JOIN mdl_user_enrolments ue ON ue.userid = u.id
                     JOIN mdl_enrol e ON e.id = ue.enrolid
                     JOIN mdl_course c ON c.id = e.courseid
-                    WHERE u.username = '$varusername'";
+                    WHERE u.username = '$email'";
             $results = \Illuminate\Support\Facades\DB::connection('lms_connection')->Select($sql);
             return $results;
+            //return view('forms.subjWGrade',compact('results', "studentInfo", 'studentCourse', 'matchfields', 'subjects'));
 	}
 
 }

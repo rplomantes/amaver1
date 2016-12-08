@@ -47,4 +47,19 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+//reports
+Route::get('/coenrollment/{id}','ReportsController@assessment');
+Route::get('/{course}/students','ReportsController@studentPerCourse');
+Route::get('/{course}/shortcourse/students','ReportsController@studentPerShortCourse');
+Route::get('/perstudent','ReportsController@perStudent');
+Route::get('/subjWGrade/{id}', 'ReportsController@getgrade');
+Route::get('/totalcollection', function(){
+    return view ('portal.auditcollection');
+});
+Route::post('/generate/totalcollection', 'ReportsController@totalcollection');
+Route::get('/collectionreport', 'ReportsController@collectionreport');
+Route::get('/persubject', function(){
+    return view ('forms.perSubj');
+});
 
+Route::post('/persubjects/{level}','ReportsController@persubject');

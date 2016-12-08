@@ -194,6 +194,15 @@ $("#degreebtnoffered").click(function(){
 	<div class = "list-group-item" id="profile">
         <a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Personal Information</a>
 	</div>
+        @if (Auth::user()->studentid!=null)
+        <div class = "list-group-item">
+        <a href='/subjWGrade/{{Auth::user()->id}}'><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> View Grade Slip</a>
+        </div>
+        <div class = "list-group-item">
+        <a href='/coenrollment/{{Auth::user()->id}}'><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> View Certificate of Enrollment</a>
+        </div>
+        @else
+        @endif
         </div>
 	
 	<div class="list-group">

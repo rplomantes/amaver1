@@ -21,7 +21,7 @@ nav,
 section,
 summary {
   display: block;
-}
+}.
 audio,
 canvas,
 progress,
@@ -6273,4 +6273,3 @@ body {
 .container_fluid .text-muted {
   margin: 20px 20px;
 }
-

@@ -53,9 +53,7 @@ $("#viewgrade").hide();
         </div>
 <div class = "list-group-item" id="viewbtngrades">
         <a href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> View Grade</a>
-        </div>
-
-        
+        </div>        
         </div>
     
 
