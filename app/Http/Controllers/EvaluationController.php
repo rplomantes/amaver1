@@ -19,7 +19,7 @@ class EvaluationController extends Controller {
 public function search(){
               
     $search = \Illuminate\Support\Facades\Input::get('search');
-    $users = DB::Select("Select * from `users` where concat(studentid, fname, lname) like '%$search%' and accesslevel=0 order by created_at DESC  limit 0, 50");
+    $users = DB::Select("Select * from `users` where concat(studentid, fname, lname) like '%$search%' and accesslevel=0 order by created_at DESC");
     $accesslevel = \Auth::user()->accesslevel;
     
     if($accesslevel != '1'){

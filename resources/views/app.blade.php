@@ -191,7 +191,7 @@
                                                         
 <!--                                                        <li><a href="#">List of Paid Students</a></li>
                                                         <li><a href="#">Grade Slip</a></li>-->
-                                                            <li><a href="/persubject">List of Enrolled per Subject</a></li>
+<!--                                                            <li><a href="/persubject">List of Enrolled per Subject</a></li>-->
                                                             <li><a href="/perstudent">Total Credited subjects, Total Passed, Total Remaining subjects</a></li>
 						</ul>
                                 	    </li>
