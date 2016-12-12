@@ -16,17 +16,17 @@
         <br>
         <table width="100%" cellpadding="1" cellspacing="0px">
             <thead>
+                <th>No.</th>
                 <th>USN</th>
                 <th>NAME</th>
-                <th>COURSE</th>
                 <th>SHORTCOURSE</th>
             </thead>
-            <tbody>
+            <tbody><?php $count = 1; ?>
                 @foreach($student as $students)
                 <tr>
+                    <td><?php echo $count++; ?></td>
                     <td>{{$students->studentid}}</td>
                     <td>{{$students->lname}}, {{$students->fname}} {{$students->mname}}</td>
-                    <td>{{$students->programcode}}</td>
                     <td>{{$students->coursename}}</td>
                 </tr>
                 @endforeach

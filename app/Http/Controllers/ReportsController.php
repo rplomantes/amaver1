@@ -21,7 +21,7 @@ class ReportsController extends Controller {
 
     public function studentPerCourse($course) {
 
-        $student = DB::Select("SELECT * FROM `users` join (SELECT user_id,programcode from interests where status=1) course on course.user_id=users.id join (SELECT user_id,count(id) as total from degrees where status=2 group by user_id) degree on degree.user_id=users.id where studentid is not null AND course.programcode like '$course' order by `lname` asc, `fname` asc, `mname` asc");
+        $student = DB::Select("SELECT * FROM `users` join (SELECT user_id,programcode from interests where status=1) course on course.user_id=users.id where course.programcode like '$course' and users.status=1 order by `lname` asc, `fname` asc, `mname` asc");
 
         //return $studentInfo;
         return view('forms.studentPerCourse', compact('student'));
@@ -29,7 +29,16 @@ class ReportsController extends Controller {
 
     public function studentPerShortCourse($course) {
 
-        $student = DB::Select("SELECT * FROM `users` join (SELECT user_id,programcode from interests where status=1) course on course.user_id=users.id join (SELECT courseid,coursename, user_id,count(id) as total from courses where status like 'GR001' group by user_id) courses on courses.user_id=users.id where studentid is not null AND courses.courseid = $course order by `lname` asc, `fname` asc, `mname` asc");
+        $student = DB::Select("SELECT *
+FROM `courses`
+JOIN (
+
+SELECT id, studentid, fname, mname, lname
+FROM `users`
+)u ON u.id = courses.user_id
+WHERE courses.courseid =$course
+AND courses.status LIKE 'GR001'
+order by `lname` asc, `fname` asc, `mname` asc");
 
         //return $studentInfo;
         return view('forms.studentPerShortCourse', compact('student'));
@@ -70,7 +79,7 @@ case degrees.status
 end not_required
 From degrees
 inner join users on users.id = degrees.user_id
-where users.studentid not like '' group by user_id, degrees.status) AS sample group by studentid
+group by user_id, degrees.status) AS sample group by studentid
 order by `lname` asc, `fname` asc, `mname` asc");
 
         //return $studentInfo;

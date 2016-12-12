@@ -16,6 +16,7 @@
         <br>
         <table width="100%" cellpadding="1" cellspacing="0px">
             <thead>
+                <th>NO.</th>
                 <th>USN</th>
                 <th>NAME</th>
                 <th>NOT YET TAKEN</th>
@@ -25,9 +26,10 @@
                 <th>PASSED</th>
                 <th>NOT REQUIRED</th>
             </thead>
-            <tbody>
+            <tbody><?php $count = 1; ?>
                 @foreach($result as $results)
                 <tr>
+                    <td><?php echo $count++; ?></td>
                     <td>{{$results->studentid}}</td>
                     <td>{{$results->lname}}, {{$results->fname}} {{$results->mname}}</td>
                     <td>{{$results->not_yet_taken + $results->not_yet_taken2}}</td>

@@ -24,13 +24,13 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-2">
-                                                            <input type="text" placeholder="First Name" class="form-control" name="fname" value="{{ old('fname') }}">
+                                                            <input type="text" placeholder="First Name" class="form-control" name="fname" value="{{ old('fname') }}"required="required">
 							</div>
                                                         <div class="col-md-2">
                                                             <input type="text" placeholder="Middle Name" class="form-control" name="mname" value="{{ old('mname') }}">
 							</div>
                                                         <div class="col-md-2">
-								<input type="text" placeholder ="Last Name" class="form-control" name="lname" value="{{ old('lname') }}">
+								<input type="text" placeholder ="Last Name" class="form-control" name="lname" value="{{ old('lname') }}"required="required">
 							</div>
 						</div>
                                                 
@@ -38,11 +38,11 @@
          
                                                   <label class="col-md-4 control-label">Date of Birth</label>
                                                     <div class="col-md-2">
-                                                        <input type="text" placeholder="1990-01-30" name="birthdate">
+                                                        <input type="date" placeholder="1990-01-30" name="birthdate" value="{{ old('birthdate')}}"required="required">
                                                     </div>  
                                                   <label class="col-md-2 control-label">Gender</label>
                                                     <div class="col-md-2">
-                                                        <select name="gender" class="form form-control">
+                                                        <select name="gender" class="form form-control"required="required">
                                                             <option value="M">Male</option>
                                                             <option value="F">Female</option>
                                                         </select>    
@@ -53,77 +53,77 @@
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								<input type="email" class="form-control" name="email" value="{{ old('email') }}"required="required">
 							</div>
 						</div>
                                                 
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Address 1</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="addr1" value="{{ old('addr1') }}">
+								<input type="text" class="form-control" name="addr1" value="{{ old('addr1') }}"required="required">
 							</div>
 						</div>
                                                 
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Address 2</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="addr2" value="{{ old('addr2') }}">
+								<input type="text" class="form-control" name="addr2" value="{{ old('addr2') }}"required="required">
 							</div>
                                                 </div>
                                                 
                                                 <div class="form-group">
-							<label class="col-md-4 control-label">City</label>
+							<label class="col-md-4 control-label">City/Municipality</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="city" value="{{ old('city') }}">
+								<input type="text" class="form-control" name="city" value="{{ old('city') }}"required="required">
 							</div>
 						</div>
 			
                                                 
                                                 <div class="form-group">
-							<label class="col-md-4 control-label">State</label>
+							<label class="col-md-4 control-label">Province</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="state" value="{{ old('state') }}">
+								<input type="text" class="form-control" name="state" value="{{ old('state') }}"required="required">
 							</div>
 						</div>
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Country</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="country" value="{{ old('country') }}">
+								<input type="text" class="form-control" name="country" value="{{ old('country') }}"required="required">
 							</div>
 						</div>
                                                 
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Zip</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="zip" value="{{ old('zip') }}">
+								<input type="text" class="form-control" name="zip" value="{{ old('zip') }}" required="required">
 							</div>
 						</div>
                                                 
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Phone Number</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+								<input type="text" class="form-control" name="phone" value="{{ old('phone') }}"required="required">
 							</div>
 						</div>
                                                 
                                                 <div class="form-group">
 							<label class="col-md-4 control-label">Mobile Number</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}">
+								<input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"required="required">
 							</div>
 						</div>
                                                 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+								<input type="password" class="form-control" name="password"required="required">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Confirm Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+								<input type="password" class="form-control" name="password_confirmation"required="required">
 							</div>
 						</div>
 
