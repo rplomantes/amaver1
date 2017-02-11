@@ -35,6 +35,7 @@
             $("#shortcoursereport").fadeIn();
         });
     });
+    
 
 </script>
 
@@ -61,23 +62,17 @@
 
 
     </div>
-
+<script type="text/javascript">
+    window.onload = function () {
+        getCourse();
+    };
+</script>
     <div class="col-md-9 col-sm-12">
-        <h3>Student per Course</h3><hr>
-        <form action="{{url('/grade/subject')}}" method="POST">
+        <h3>Student per Course with Grades</h3><hr>
+        <form action="{{url('/list/grades/')}}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <select name="level" onchange="getLevel(this.value)">
-                <option value=null>Select level:</option>
-                <option value="1st">First Level</option>
-                <option value="2nd">Second Level</option>
-                <option value="3rd">Third Level</option>
-                <option value="4th">Fourth Level</option>
-            </select><br><br>
-            <select name="term" onchange="getValue(level.value, this.value)" id="term">
-                <option>Select term:</option>
-            </select><br><br>
-            <select name="subject" id="subject">
-                <option>Select Subject:</option>
+            <select name="course" id="course">
+                <option>Select Course:</option>
             </select><br><br>
             <input type="submit" value="Submit">
         </form>

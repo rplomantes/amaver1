@@ -58,8 +58,27 @@ Route::get('/totalcollection', function(){
 });
 Route::post('/generate/totalcollection', 'ReportsController@totalcollection');
 Route::get('/collectionreport', 'ReportsController@collectionreport');
-Route::get('/persubject', function(){
+
+Route::post('/grade/subject','ReportsController@persubjectgrade');
+
+Route::get('/list/subject', function(){
     return view ('forms.perSubj');
 });
 
-Route::post('/persubjects/{level}','ReportsController@persubject');
+Route::get('/list/subject/{level}','ReportsController@level');
+
+Route::get('/list/subject/{level}/{term}','ReportsController@persubject');
+
+
+
+Route::post('/list/grades','ReportsController@subjectGrades');
+
+Route::get('/list/course', function(){
+    return view ('forms.subjGrades');
+});
+Route::get('/passed/grades/course', function(){
+    return view ('forms.PassedsubjGrades');
+});
+Route::post('/passed/grades','ReportsController@passedGrades');
+
+Route::get('get/list/grades','ReportsController@course');

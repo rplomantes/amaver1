@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -91,7 +91,8 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="{{asset('/script/fileinput.js')}}"></script>
         <script src="{{asset('/script/bootstrap-datepicker.js')}}"></script>
-        <script src="{{asset('/script/jquery-ui.min.js')}}"></script> 
+        <script src="{{asset('/script/jquery-ui.min.js')}}"></script>
+        <script src="/script/select_jquery.js"></script>
     </head>
     <body> 
         <div class= "container-fluid">
@@ -191,7 +192,9 @@
 
                                     <!--                                                        <li><a href="#">List of Paid Students</a></li>
                                                                                             <li><a href="#">Grade Slip</a></li>-->
-                                    <!--                                                            <li><a href="/persubject">List of Enrolled per Subject</a></li>-->
+                                <li><a href="/list/subject">List of Enrolled per Course</a></li>
+                                <li><a href="/list/course">List of Enrolled per Course with Grades</a></li>
+                                <li><a href="/passed/grades/course">List of Passed Students per Course with Grades</a></li>
                                 <li><a href="/perstudent">Total Credited Course, Total Passed, Total Remaining Course</a></li>
                             </ul>
                         </li>

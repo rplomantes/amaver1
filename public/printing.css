@@ -30,5 +30,4 @@
             @top-right {
                content: counter(page) " of " counter(pages);
             }
-        }    
-    
+        }

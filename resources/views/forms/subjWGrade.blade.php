@@ -44,7 +44,7 @@
         
         <table width="100%" cellpadding="1" cellspacing="0px">
             <thead>
-                <th>SUBJECT</th>
+                <th>COURSE</th>
                 <th>FINAL GRADE</th>
             </thead>
             <tbody>
@@ -59,9 +59,7 @@
                 </tr>
             </tbody>
         </table>
-        
     </body>
 </html>
-
 
 

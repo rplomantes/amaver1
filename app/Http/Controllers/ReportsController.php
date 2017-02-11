@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
+use Response;
 
 class ReportsController extends Controller {
 
@@ -109,7 +110,7 @@ order by `lname` asc, `fname` asc, `mname` asc");
                     WHERE u.username = '$email'";
         $results = \Illuminate\Support\Facades\DB::connection('lms_connection')->Select($sql);
         //return $results;
-        return view('forms.subjWGrade', compact('results', "studentInfo", 'studentCourse', 'matchfields', 'subjects'));
+        return view('forms.gradeslip', compact('results', "studentInfo", 'studentCourse', 'matchfields', 'subjects'));
     }
 
     public function totalcollection() {
@@ -163,11 +164,77 @@ WHERE users.studentid not like '' group by user_id, courses.status) as b group b
         return view('forms.collectionreport', compact('collection'));
     }
 
-    public function persubject($level) {
-        $sql = DB::Select("SELECT distinct concat (subjectcode,' ', subjectname) as subjectcodes, subjectcode FROM degrees WHERE level = '$level' order by subjectcodes ASC");
+    public function persubject($level, $term) {
+        $data = DB::Select("SELECT distinct concat (subjectcode,' ', subjectname) as subjectcodes, subjectcode FROM degrees WHERE level = '$level' and term = '$term' order by subjectcodes ASC");
 
-        //return $studentInfo;
-        return view('sample', compact('sql'));
+        return Response::json($data);
+    }
+    
+    public function level($level) {
+        $data = DB::Select("SELECT distinct term FROM degrees WHERE level = '$level' order by term asc");
+
+        return Response::json($data);
     }
 
+    public function persubjectgrade(Request $request) {
+        $level = $request ['level'];
+        //  echo $level;
+        $subj = $request ['subject'];
+        $term = $request ['term'];
+        //    echo $subj;
+        $sql = DB::Select("SELECT users.studentid, users.fname, users.lname, degrees.level, degrees.term, degrees.subjectcode, degrees.subjectname FROM degrees join users on users.id=degrees.user_id WHERE level = '$level' and subjectcode = '$subj' and term = '$term' and degrees.status = 2 order by users.lname asc");
+        return view('forms.resultsubject', compact('sql'));
+    }
+    
+    public function course() {
+        $result = "select distinct mdl_course.fullname from mdl_course order by mdl_course.fullname asc";
+        $data = \Illuminate\Support\Facades\DB::connection('lms_connection')->Select($result);
+
+        return Response::json($data);
+    }
+    
+    public function subjectGrades(Request $request) {
+        $course = $request ['course'];
+
+        $sql = "SELECT u.firstname, u.lastname, c.fullname, (
+                    SELECT gh.finalgrade
+                    FROM mdl_grade_grades gh
+                    JOIN mdl_grade_items gih ON gih.id = gh.itemid
+		    WHERE gih.itemtype = 'course'
+                    AND u.id = gh.userid
+                    AND gih.courseid = c.id
+                    GROUP BY c.id
+                    ) AS finalgrade
+                    FROM mdl_user u
+                    JOIN mdl_user_enrolments ue ON ue.userid = u.id
+                    JOIN mdl_enrol e ON e.id = ue.enrolid
+                    JOIN mdl_course c ON c.id = e.courseid
+                    WHERE c.fullname = '$course'";
+        $results = \Illuminate\Support\Facades\DB::connection('lms_connection')->Select($sql);
+        //return $results;
+        return view('forms.subjWithGrade', compact('results'));
+    }
+    
+    public function passedGrades(Request $request) {
+        $course = $request ['course'];
+
+        $sql = "SELECT u.firstname, u.lastname, c.fullname, (
+                    SELECT gh.finalgrade
+                    FROM mdl_grade_grades gh
+                    JOIN mdl_grade_items gih ON gih.id = gh.itemid
+		    WHERE gih.itemtype = 'course'
+                    AND u.id = gh.userid
+                    AND gih.courseid = c.id
+                    AND gh.finalgrade >= 50
+                    GROUP BY c.id
+                    ) AS finalgrade
+                    FROM mdl_user u
+                    JOIN mdl_user_enrolments ue ON ue.userid = u.id
+                    JOIN mdl_enrol e ON e.id = ue.enrolid
+                    JOIN mdl_course c ON c.id = e.courseid
+                    WHERE c.fullname = '$course'";
+        $results = \Illuminate\Support\Facades\DB::connection('lms_connection')->Select($sql);
+        //return $results;
+        return view('forms.subjWithGrade', compact('results'));
+    }
 }
