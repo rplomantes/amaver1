@@ -20,7 +20,7 @@ public function search(){
               
     $search = \Illuminate\Support\Facades\Input::get('search');
 
-    $users = \App\User::where('lname','like',"$search%")->where('accesslevel','0')->orderBy('created_at','DESC')->limit(10000)->get();
+    $users = \App\User::where('lname','like',"$search%")->where('accesslevel','0')->orderBy('created_at','DESC')->limit(100)->get();
 
     $accesslevel = \Auth::user()->accesslevel;
     

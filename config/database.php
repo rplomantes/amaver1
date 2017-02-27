@@ -66,10 +66,10 @@ return [
 
 		'lms_connection' => [
                         'driver'    => 'mysql',
-                        'host'      => 'amanewdb.cywaxl3qqd6o.ap-southeast-1.rds.amazonaws.com',
-                        'database'  => 'lms32DB',
-                        'username'  => 'db_user',
-                        'password'  => 'Password4321',
+                        'host'      => env('DB_HOST_LMS','localhost'),
+                        'database'  => env('DB_DATABASE_LMS','amadb'),
+                        'username'  => env('DB_USERNAME_LMS','amauser'),
+                        'password'  => env('DB_PASSWORD_LMS','amapassword'),
                         'charset'   => 'utf8',
                         'collation' => 'utf8_unicode_ci',
                         'prefix'    => '',
