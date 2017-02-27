@@ -30,9 +30,9 @@
         </select>
         </div> 
         <div class="form-group">
-        <div class="form-control">
-        <input type="submit" class="btn btn-danger" value ="Change Course">
-        </div>
+        
+        <input type="submit" class="btn btn-danger form-control" value ="Change Course">
+       
 	</div>
         {!!Form::close()!!}
     </div>    

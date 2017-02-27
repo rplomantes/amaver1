@@ -66,10 +66,10 @@ return [
 
 		'lms_connection' => [
                         'driver'    => 'mysql',
-                        'host'      => 'localhost',
-                        'database'  => 'amaDB',
-                        'username'  => 'root',
-                        'password'  => 'nephila',
+                        'host'      => 'amanewdb.cywaxl3qqd6o.ap-southeast-1.rds.amazonaws.com',
+                        'database'  => 'lms32DB',
+                        'username'  => 'db_user',
+                        'password'  => 'Password4321',
                         'charset'   => 'utf8',
                         'collation' => 'utf8_unicode_ci',
                         'prefix'    => '',

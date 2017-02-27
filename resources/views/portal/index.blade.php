@@ -514,7 +514,7 @@ $("#birthcertificate").fileinput({
         @foreach($mydegree as $mycourse)
         <tr><td>{{$mycourse->coursename}}</td><td>{{$mycourse->unit}}</td><td align="right">{{$mycourse->amount}}</td><td><a href="{{url('/book/delete',$mycourse->id)}}">Remove</a></td></tr>
         @endforeach
-        <tr><td colspan="2">Other Fees</td><td align="right">605.00</td><td></td></tr>
+        <tr><td colspan="2">Other Fees</td><td align="right">1000.00</td><td></td></tr>
          <tr><td colspan="2">Total</td><td align="right"><b>{{$amount1}}.00</b></td><td></td></tr>
     </tbody></table>    
     <div class="form-group">

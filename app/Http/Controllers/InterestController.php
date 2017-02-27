@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use Mail;
+use Validator;
+use Redirect;
 class InterestController extends Controller {
 
     
@@ -42,12 +44,15 @@ class InterestController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-        $this->validate($request,[
-            'tor' => 'mimes:jpeg,png,pdf,gif|max:5000',
-            'diploma' => 'mimes:jpeg,png,pdf,gif|max:5000',
-            'form137' => 'mimes:jpeg,png,pdf,gif|max:5000',
-            'birthcertificate' => 'mimes:jpeg,png,pdf,gif|max:5000'
+        $validator= Validator::make($request->all(),[
+            'tor' => 'mimes:jpeg,jpg,png,pdf,gif|max:5000',
+            'diploma' => 'mimes:jpeg,jpg,png,pdf,gif|max:5000',
+            'form137' => 'mimes:jpeg,jpg,png,pdf,gif|max:5000',
+            'birthcertificate' => 'mimes:jpeg,jpg,png,pdf,gif|max:5000'
         ]);
+	if($validator->fails()){
+	return redirect('/')->withErrors($validator);
+	}
         $degreename = \App\DegreeOffering::where('programcode',$request->degree)->first(); 
         $interest = new \App\Interest;
         $interest->user_id = \Auth::user()->id;

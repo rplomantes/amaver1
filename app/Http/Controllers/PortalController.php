@@ -202,7 +202,7 @@ class PortalController extends Controller {
                           }
                           
                           }
-                          $amount=$amount + 605;
+                          $amount=$amount + 1000;
             return $amount;
         }
 
@@ -220,8 +220,8 @@ class PortalController extends Controller {
                           
                           }
                           
-                          $amount = $amount + 605;
-                          $stritem = $stritem . "<Items><itemname>Other Fees</itemname><quantity>1</quantity><amount>605.00</amount></Items>";
+                          $amount = $amount + 1000;
+                          $stritem = $stritem . "<Items><itemname>Other Fees</itemname><quantity>1</quantity><amount>1000.00</amount></Items>";
                           
                       $merchantdetails = Pdetails::first();  
                       $_mid = $merchantdetails->merchantid;
@@ -301,7 +301,7 @@ class PortalController extends Controller {
 		      $strxml = $strxml . "</Request>";
 		      $b64string =  base64_encode($strxml);    
                       
-                      $myStr = "<form name='form1' method='post' action='https://apps.paynamics.net/webpayment_V2/default.aspx'>
+                      $myStr = "<form name='form1' method='post' action='https://ptiapps.paynamics.net/webpayment_v2/default.aspx'>
    				<input type='hidden' name='paymentrequest' id='paymentrequest' value='".$b64string."'>
 							    <input type='submit' value='Go to payment' class='form-control btn btn-success'>
 						</form>";

@@ -19,7 +19,9 @@ class EvaluationController extends Controller {
 public function search(){
               
     $search = \Illuminate\Support\Facades\Input::get('search');
-    $users = DB::Select("Select * from `users` where concat(studentid, fname, lname) like '%$search%' and accesslevel=0 order by created_at DESC  limit 0, 300");
+
+    $users = \App\User::where('lname','like',"$search%")->where('accesslevel','0')->orderBy('created_at','DESC')->limit(10000)->get();
+
     $accesslevel = \Auth::user()->accesslevel;
     
     if($accesslevel != '1'){
@@ -27,10 +29,12 @@ public function search(){
     }
     
     return view('portal.evaluationlist',compact('users'));
-   
-    
+      
     
 }
+
+
+
 
 public function view($id){
              
@@ -284,9 +288,12 @@ public function changeCourse($userid){
             $adddegree->amount=$selected->amount;
             $adddegree->status=0;
             $adddegree->save();
-            $newprogramcode = $selected->programcode;
-            $newprogramname = $selected->programname;
+            //$newprogramcode = $selected->programcode;
+            //$newprogramname = $selected->programname;
             }
+	    $newprogramcode = $request->changeto;
+            $newprogramname = \App\DegreeOffering::where('programcode',$newprogramcode)->first()->programname;
+
             
             $interest = \App\Interest::where('user_id',$request->userid)->first();
             $interest->programcode = $newprogramcode;
@@ -301,7 +308,7 @@ public function changeCourse($userid){
                 $updatestatus = \App\Degree::where('user_id',$request->userid)
                         ->where('subjectcode',$comparecourse->subjectcode)
                         ->where('programcode',$newprogramcode)->first();
-                if(!empty($updatestatus)){
+                if(count($updatestatus)>0){
                 $updatestatus->status = $comparecourse->status;
                 $updatestatus->update();
                 }
@@ -309,7 +316,7 @@ public function changeCourse($userid){
             }
             
             $deletecourse = \App\Degree::where('user_id',$request->userid)
-                    ->where('programcode',$oldprogramcode)->delete();
+                    ->where('programcode','!=',$newprogramcode)->delete();
             
             return redirect('view/'. $request->userid);
             

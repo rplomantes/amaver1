@@ -1,3 +1,10 @@
+
+
+<Files ~ “^w+.(gif|jpe?g|png|pdf)$”>
+order deny,allow
+allow from all
+</Files>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
